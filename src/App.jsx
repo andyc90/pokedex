@@ -122,7 +122,7 @@ const App = () => {
     <div className="pokedex-app">
       <div className="input-container">
         <h1>
-          <img src="/src/imgs/pokedex-logo.png" alt="Pokédex Logo" />
+          <img src="./src/imgs/pokedex-logo.png" alt="Pokédex Logo" />
         </h1>
         <form onSubmit={handleSearch}>
           <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="E.g. Pikachu" />
