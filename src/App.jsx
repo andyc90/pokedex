@@ -1,5 +1,30 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import "./App.css";
+
+const TypeBadge = ({ type }) => {
+  return (
+    <span className={`type-badge ${type}`} style={{ backgroundColor: `var(--${type})` }}>
+      {type}
+    </span>
+  );
+};
+
+TypeBadge.propTypes = {
+  type: PropTypes.string.isRequired,
+};
+
+const WeaknessBadge = ({ type }) => {
+  return (
+    <span className={`weakness-badge ${type}`} style={{ backgroundColor: `var(--${type})` }}>
+      {type}
+    </span>
+  );
+};
+
+WeaknessBadge.propTypes = {
+  type: PropTypes.string.isRequired,
+};
 
 const toTitleCase = (str) =>
   str
@@ -135,8 +160,8 @@ const App = () => {
         <div className="output-container">
           {pokemon && (
             <div className="pokemon">
-              <h2>{pokemon.number}</h2> {}
-              <h3>{pokemon.name}</h3> {}
+              <h2>{pokemon.number}</h2>
+              <h3>{pokemon.name}</h3>
               {imageUrl && <img src={imageUrl} alt={pokemon.name} />}
               <p>
                 <strong>Description:</strong> {pokemon.description}
@@ -157,10 +182,16 @@ const App = () => {
                 <strong>Abilities:</strong> {pokemon.abilities}
               </p>
               <p>
-                <strong>Type:</strong> {pokemon.type}
+                <strong>Type:</strong>{" "}
+                {pokemon.type.split(", ").map((type) => (
+                  <TypeBadge key={type} type={type} />
+                ))}
               </p>
               <p>
-                <strong>Weakness:</strong> {pokemon.weaknesses}
+                <strong>Weakness:</strong>{" "}
+                {pokemon.weaknesses.split(", ").map((type) => (
+                  <WeaknessBadge key={type} type={type} />
+                ))}
               </p>
             </div>
           )}

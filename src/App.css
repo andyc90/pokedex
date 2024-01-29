@@ -7,6 +7,24 @@
   --text-color: black;
   --number-color: #878b8e;
   --title-color: #072ac8;
+
+  --Normal: #c18cba;
+  --Fire: #ef271b;
+  --Water: #4361ee;
+  --Electric: #ffbf00;
+  --Grass: #16c172;
+  --Ice: #90e0ef;
+  --Fighting: #c75000;
+  --Poison: #6e44ff;
+  --Ground: #885629;
+  --Flying: #8b9cad;
+  --Psychic: #db00b6;
+  --Bug: #059669;
+  --Rock: #63320b;
+  --Ghost: #9a54a1;
+  --Dark: #434649;
+  --Steel: #73e2a7;
+  --Fairy: #ee4268;
 }
 
 .pokedex-app {
@@ -117,4 +135,22 @@
   height: auto;
   display: block;
   margin: 0 auto;
+}
+
+.type-badge {
+  color: white;
+  display: inline-block;
+  padding: 0px 10px;
+  margin: 2px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.weakness-badge {
+  color: white;
+  display: inline-block;
+  padding: 0px 10px;
+  margin: 2px;
+  border-radius: 5px;
+  font-weight: bold;
 }
