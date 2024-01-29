@@ -1,0 +1,112 @@
+:root {
+  --input-container-color: #595f65;
+  --output-container-color: #ffffff;
+  --primary-color: #072ac8;
+  --button-color: #ff844f;
+  --button-hover-color: #d96730;
+  --background-color: #f8f9fa;
+  --text-color: black;
+  --number-color: #878b8e;
+  --title-color: #072ac8;
+}
+
+.pokedex-app {
+  width: 400px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.input-container {
+  background: var(--input-container-color);
+  color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.input-container h1 {
+  font-size: 24px;
+  margin: 0 0 20px;
+}
+
+.input-container input {
+  width: 80%;
+  font-size: 16px;
+  margin-right: 10px;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.input-container button {
+  background: var(--button-color);
+  color: #000;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.input-container button:hover,
+.input-container button:focus {
+  background: var(--button-hover-color);
+}
+
+.output-container {
+  background: var(--background-color);
+  color: var(--text-color);
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+.output-container h2 {
+  color: var(--primary-color);
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.output-container img {
+  width: 150px;
+  height: 150px;
+  display: block;
+  margin: 0 auto;
+}
+
+.output-container p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+
+.output-container p strong {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.pokemon h2 {
+  color: var(--number-color);
+  font-size: 20px;
+  text-align: center;
+  margin-top: 0;
+  font-weight: bold;
+}
+
+.pokemon h3 {
+  color: var(--title-color);
+  font-size: 24px;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.search-icon {
+  color: white;
+}
+
+.pokemon p:last-child {
+  margin-bottom: 0;
+}
