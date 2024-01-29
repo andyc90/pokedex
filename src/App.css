@@ -111,3 +111,10 @@
 .pokemon p:last-child {
   margin-bottom: 0;
 }
+
+.input-container h1 img {
+  width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
