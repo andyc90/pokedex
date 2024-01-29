@@ -33,7 +33,6 @@
 .pokedex-app {
   width: 400px;
   border-radius: 10px;
-  overflow: hidden;
 }
 
 .input-container {
@@ -42,6 +41,7 @@
   padding: 20px;
   border-radius: 15px;
   text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .input-container h1 {
@@ -81,6 +81,7 @@
   padding: 20px;
   border-radius: 15px;
   margin-top: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .output-container h2 {
