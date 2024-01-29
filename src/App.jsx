@@ -46,6 +46,22 @@ const formatNumber = (number) => `#${number.toString().padStart(4, "0")}`;
 const formatHeight = (height) => `${height / 10} m`;
 const formatWeight = (weight) => `${weight / 10} kg`;
 
+const formatWeaknesses = async (types) => {
+  const weaknesses = (
+    await Promise.all(
+      types.map(async (typeInfo) => {
+        const typeResponse = await fetch(typeInfo.type.url);
+        const typeData = await typeResponse.json();
+        return typeData.damage_relations.double_damage_from.map((weakness) => toTitleCase(weakness.name));
+      })
+    )
+  ).flat();
+
+  const uniqueWeaknesses = [...new Set(weaknesses)];
+
+  return uniqueWeaknesses.join(", ");
+};
+
 const App = () => {
   const [query, setQuery] = useState("");
   const [pokemon, setPokemon] = useState(null);
@@ -129,17 +145,7 @@ const App = () => {
       const abilities = data.abilities.map((ability) => toTitleCase(ability.ability.name)).join(", ");
       const types = data.types.map((typeInfo) => toTitleCase(typeInfo.type.name)).join(", ");
 
-      const weaknesses = (
-        await Promise.all(
-          data.types.map(async (typeInfo) => {
-            const typeResponse = await fetch(typeInfo.type.url);
-            const typeData = await typeResponse.json();
-            return typeData.damage_relations.double_damage_from.map((weakness) => toTitleCase(weakness.name));
-          })
-        )
-      )
-        .flat()
-        .join(", ");
+      const weaknesses = await formatWeaknesses(data.types);
 
       setPokemon({
         number: formatNumber(data.id),
