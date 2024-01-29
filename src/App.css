@@ -7,6 +7,9 @@
   --text-color: black;
   --number-color: #878b8e;
   --title-color: #072ac8;
+  --male-badge-color: #197ccd;
+  --female-badge-color: #ed2190;
+  --genderless-badge-color: #cccccc;
 
   --Normal: #c18cba;
   --Fire: #ef271b;
@@ -153,4 +156,28 @@
   margin: 2px;
   border-radius: 5px;
   font-weight: bold;
+}
+
+.gender-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: white;
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.gender-badge.male {
+  background-color: var(--male-badge-color);
+}
+
+.gender-badge.female {
+  background-color: var(--female-badge-color);
+}
+
+.gender-badge.genderless {
+  background-color: var(--genderless-badge-color);
 }

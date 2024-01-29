@@ -89,15 +89,38 @@ const App = () => {
       const description = descriptionEntry ? formatDescription(descriptionEntry.flavor_text) : "";
       const genderRate = speciesData.gender_rate;
 
-      let gender = "Genderless";
+      let genderIcon = null;
       if (genderRate >= 0) {
         if (genderRate === 0) {
-          gender = "Male";
+          genderIcon = (
+            <span className="gender-badge male">
+              <i className="fas fa-mars"></i>
+            </span>
+          );
         } else if (genderRate === 8) {
-          gender = "Female";
+          genderIcon = (
+            <span className="gender-badge female">
+              <i className="fas fa-venus"></i>
+            </span>
+          );
         } else {
-          gender = "Male/Female";
+          genderIcon = (
+            <>
+              <span className="gender-badge male">
+                <i className="fas fa-mars"></i>
+              </span>
+              <span className="gender-badge female">
+                <i className="fas fa-venus"></i>
+              </span>
+            </>
+          );
         }
+      } else {
+        genderIcon = (
+          <span className="gender-badge genderless">
+            <i className="fas fa-genderless"></i>
+          </span>
+        );
       }
 
       const categoryEntry = speciesData.genera.find((genus) => genus.language.name === "en");
@@ -123,7 +146,7 @@ const App = () => {
         description,
         height: formatHeight(data.height),
         weight: formatWeight(data.weight),
-        gender,
+        genderIcon,
         category,
         abilities,
         type: types,
@@ -173,7 +196,7 @@ const App = () => {
                 <strong>Weight:</strong> {pokemon.weight}
               </p>
               <p>
-                <strong>Gender:</strong> {pokemon.gender}
+                <strong>Gender:</strong> {pokemon.genderIcon}
               </p>
               <p>
                 <strong>Category:</strong> {pokemon.category}
