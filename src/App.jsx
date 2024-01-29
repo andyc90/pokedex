@@ -62,7 +62,7 @@ const App = () => {
   const fetchPokemonImage = async (pokemonName) => {
     try {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`);
-      if (!response.ok) throw new Error("Pokemon image not found.");
+      if (!response.ok) throw new Error("Pokemon not found.");
 
       const data = await response.json();
       const imageUrl = data.sprites.front_default;
@@ -77,10 +77,11 @@ const App = () => {
     setError("");
     setPokemon(null);
 
-    try {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`);
-      if (!response.ok) throw new Error("Pokemon not found.");
+    const cleanedPokemonName = pokemonName.replace(/^0+/g, "");
 
+    try {
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${cleanedPokemonName.toLowerCase()}`);
+      if (!response.ok) throw new Error("Pokemon not found.");
       const data = await response.json();
       const speciesResponse = await fetch(data.species.url);
       const speciesData = await speciesResponse.json();
