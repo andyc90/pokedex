@@ -4,7 +4,10 @@ import "./App.css";
 
 const TypeBadge = ({ type }) => {
   return (
-    <span className={`type-badge ${type}`} style={{ backgroundColor: `var(--${type})` }}>
+    <span
+      className={`type-badge ${type}`}
+      style={{ backgroundColor: `var(--${type})` }}
+    >
       {type}
     </span>
   );
@@ -16,7 +19,10 @@ TypeBadge.propTypes = {
 
 const WeaknessBadge = ({ type }) => {
   return (
-    <span className={`weakness-badge ${type}`} style={{ backgroundColor: `var(--${type})` }}>
+    <span
+      className={`weakness-badge ${type}`}
+      style={{ backgroundColor: `var(--${type})` }}
+    >
       {type}
     </span>
   );
@@ -52,7 +58,9 @@ const formatWeaknesses = async (types) => {
       types.map(async (typeInfo) => {
         const typeResponse = await fetch(typeInfo.type.url);
         const typeData = await typeResponse.json();
-        return typeData.damage_relations.double_damage_from.map((weakness) => toTitleCase(weakness.name));
+        return typeData.damage_relations.double_damage_from.map((weakness) =>
+          toTitleCase(weakness.name)
+        );
       })
     )
   ).flat();
@@ -77,7 +85,9 @@ const App = () => {
 
   const fetchPokemonImage = async (pokemonName) => {
     try {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`);
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`
+      );
       if (!response.ok) throw new Error("Pokemon not found.");
 
       const data = await response.json();
@@ -96,14 +106,20 @@ const App = () => {
     const cleanedPokemonName = pokemonName.replace(/^0+/g, "");
 
     try {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${cleanedPokemonName.toLowerCase()}`);
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${cleanedPokemonName.toLowerCase()}`
+      );
       if (!response.ok) throw new Error("Pokemon not found.");
       const data = await response.json();
       const speciesResponse = await fetch(data.species.url);
       const speciesData = await speciesResponse.json();
 
-      const descriptionEntry = speciesData.flavor_text_entries.find((entry) => entry.language.name === "en");
-      const description = descriptionEntry ? formatDescription(descriptionEntry.flavor_text) : "";
+      const descriptionEntry = speciesData.flavor_text_entries.find(
+        (entry) => entry.language.name === "en"
+      );
+      const description = descriptionEntry
+        ? formatDescription(descriptionEntry.flavor_text)
+        : "";
       const genderRate = speciesData.gender_rate;
 
       let genderIcon = null;
@@ -140,10 +156,16 @@ const App = () => {
         );
       }
 
-      const categoryEntry = speciesData.genera.find((genus) => genus.language.name === "en");
+      const categoryEntry = speciesData.genera.find(
+        (genus) => genus.language.name === "en"
+      );
       const category = categoryEntry ? categoryEntry.genus.split(" ")[0] : "";
-      const abilities = data.abilities.map((ability) => toTitleCase(ability.ability.name)).join(", ");
-      const types = data.types.map((typeInfo) => toTitleCase(typeInfo.type.name)).join(", ");
+      const abilities = data.abilities
+        .map((ability) => toTitleCase(ability.ability.name))
+        .join(", ");
+      const types = data.types
+        .map((typeInfo) => toTitleCase(typeInfo.type.name))
+        .join(", ");
 
       const weaknesses = await formatWeaknesses(data.types);
 
@@ -177,10 +199,15 @@ const App = () => {
     <div className="pokedex-app">
       <div className="input-container">
         <h1>
-          <img src="https://archives.bulbagarden.net/media/upload/4/4b/Pok%C3%A9dex_logo.png" alt="Pokédex" />
+          <img src="/pokedex-logo.png" alt="Pokedex Logo" />
         </h1>
         <form onSubmit={handleSearch}>
-          <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="E.g. Pikachu" />
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="E.g. Pikachu"
+          />
           <button type="submit">
             <i className="fa fa-search search-icon"></i>
           </button>
